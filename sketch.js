@@ -25,9 +25,9 @@ function draw() {
 
   fill(255, 0, 100);
   rect(food.x, food.y, scl, scl);
-
   snake.update();
   snake.show();
+  snake.death();
 }
 
 function keyPressed() {
