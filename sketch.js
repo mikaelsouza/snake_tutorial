@@ -1,12 +1,15 @@
 var snake;
 var food;
 var scl = 10;
+var score;
 
 function setup() {
+  score = document.getElementById("Score");
   frameRate(15);
   createCanvas(600, 600);
   snake = new Snake();
   pickLocation();
+  score.innerText = "Score: " + snake.size;
 }
 
 function pickLocation() {
@@ -28,6 +31,7 @@ function draw() {
   snake.update();
   snake.show();
   snake.death();
+  score.innerText = "Score: " + snake.size;
 }
 
 function keyPressed() {

@@ -8,8 +8,16 @@ function Snake() {
   this.tail = [];
 
   this.dir = function(x, y) {
+
+    if ((this.xspeed == 1) && (x == -1) || (this.yspeed == 1) && (y == -1)) {
+      return;
+    } else if ((this.xspeed == -1 && (x == 1)) || (this.yspeed == -1) && (y == 1)) {
+      return;
+    }
+
     this.xspeed = x;
     this.yspeed = y;
+
   };
 
   this.restart = function() {
@@ -21,9 +29,12 @@ function Snake() {
 
     this.xspeed = 1;
     this.yspeed = 0;
-  }
+  };
 
   this.death = function() {
+    if (this.x > width || this.y > height || this.x < 0 || this.y < 0) {
+      this.restart();
+    }
     for (var i = 0; i < this.tail.length; i++) {
       if (dist(this.tail[i].x, this.tail[i].y, this.x, this.y) < 1) {
         this.restart();
@@ -51,9 +62,6 @@ function Snake() {
 
     this.x += this.xspeed * scl;
     this.y += this.yspeed * scl;
-
-    this.x = constrain(this.x, 0, width - scl);
-    this.y = constrain(this.y, 0, height - scl);
   };
 
   this.show = function() {
