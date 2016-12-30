@@ -20,24 +20,14 @@ function Snake() {
 
   };
 
-  this.restart = function() {
-    this.size = 0;
-    this.tail = [];
-
-    this.x = 0;
-    this.y = 0;
-
-    this.xspeed = 1;
-    this.yspeed = 0;
-  };
-
   this.death = function() {
-    if (this.x > width || this.y > height || this.x < 0 || this.y < 0) {
-      this.restart();
+    if (this.x >= width - 1 || this.y >= height - 1 || this.x < 0 || this.y < 0) {
+      console.log(this.x, this.y);
+      return true;
     }
     for (var i = 0; i < this.tail.length; i++) {
       if (dist(this.tail[i].x, this.tail[i].y, this.x, this.y) < 1) {
-        this.restart();
+        return true;
       }
     }
   };
