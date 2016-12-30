@@ -10,7 +10,6 @@ function setup() {
   createCanvas(601, 601);
   snake = new Snake();
   pickLocation();
-  score.innerText = "Score: " + snake.size;
 }
 
 function pickLocation() {
@@ -21,7 +20,7 @@ function pickLocation() {
 }
 
 restart = function() {
-  snake.size = 0;
+  snake.size = 1;
   snake.tail = [];
 
   snake.x = 0;
@@ -48,7 +47,7 @@ function draw() {
   }
   snake.show();
 
-  score.innerText = "Score: " + snake.size;
+  score.innerText = "Score: " + (snake.size - 1);
   pressed = false;
 }
 

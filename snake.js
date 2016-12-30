@@ -4,7 +4,7 @@ function Snake() {
   this.xspeed = 1;
   this.yspeed = 0;
 
-  this.size = 0;
+  this.size = 1;
   this.tail = [];
 
   this.dir = function(x, y) {
@@ -22,7 +22,6 @@ function Snake() {
 
   this.death = function() {
     if (this.x >= width - 1 || this.y >= height - 1 || this.x < 0 || this.y < 0) {
-      console.log(this.x, this.y);
       return true;
     }
     for (var i = 0; i < this.tail.length; i++) {
